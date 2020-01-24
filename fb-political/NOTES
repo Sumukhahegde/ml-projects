@@ -1,0 +1,27 @@
+1. Hypothesis :
+
+As many of you have noticed that at present India is polarized along many fault lines. I have observed that the political preference of people no longer depends on the day to day working and performance of the government but depends on the factors which do not change over a period of time,  such as religion, primary language, geographic location and the highest education level.  This is a bad sign for democracy because the government can take people's concent on major policy decision for granted.
+
+In order to support my hypothesis I have carried out a small experiment, mainly for the pedagical purpose.  However, similar experiments if can be carried out  on much larger scale then those can be very useful in many different tasks, including winning the elections.
+
+
+2. Data 
+
+I created a small data set of my facebook friends which have five features & one tagert (csv file is provided). The features which are in the form of binary variables are whether a person (a) holds a doctorate degree (b) is hindu (c) have been abroad (d) is more comfortable with hindi and is (e) from the nother part of the country. The target variable is whether the person support the political party with the following prominent features (a) cultural chavonism (b) hyper-nationalism (c) extreme ringht wing (d) believe more in theocarcy as comapred to democracy. In place of putting everything, I condence all these features in in terms of one target variable which I call 'is_right'. I understand a lot of explnation is needed for identifying the feature variables & target but I will avoid that here.
+
+
+3. Modeling :
+
+  Since this is a simple classification problem with very less data so I have used decision tree classifier for this purpose. I use python scikit-learn module for this purpose and also used 'gini' index for building the decision tree.
+
+
+4. Results :
+
+  I was expecting that having a Ph.D degree (in science) will make a person less attracted towards the righ wing politics but what I found that more than that the primary language a person uses have more effect on his or her political interest. For example, a person who hardly/never reads  the  New York Time, Guardian, Washinton Post, BBC, Indian Express, Times of India, The hindu, Hindustan Times and other english news papers and  hardly/never watch english newpapers have higher probability of being a strong  supporter of the right wing political party.
+
+
+Note : There are many approximation in this analysis. 
+
+
+
+ 
