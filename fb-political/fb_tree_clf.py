@@ -23,7 +23,8 @@ if __name__ == "__main__":
 
     ids = df_test['id'].tolist() 
 
-    clf = tree.DecisionTreeClassifier(criterion='gini') 
+    #clf = tree.DecisionTreeClassifier(criterion='gini') 
+    clf = tree.DecisionTreeClassifier(criterion='entropy') 
     clf.fit(X_train, y_train)
 
     z = clf.score(X_train, y_train)
@@ -41,7 +42,7 @@ if __name__ == "__main__":
     f = plt.figure(figsize=(12,8))
     plot_tree(clf, filled=True, fontsize=8)
     #plt.show()
-    f.savefig("fb.pdf", bbox_inches='tight')
+    f.savefig("fb_entropy.pdf", bbox_inches='tight')
              
     print(clf.get_params())
     print(clf.get_n_leaves())
