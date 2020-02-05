@@ -9,9 +9,10 @@ from sklearn import tree
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn import neighbors
+from mlxtend.plotting import plot_confusion_matrix
 
 # This is for Support Vector Machines 
-def svm_clf (x_train, y_train):
+def Support_Vector_Machine (x_train, y_train):
    print("SVM Classifier") 
    #clf = svm.LinearSVC()
    #clf = svm.SVC(kernel='rbf')
@@ -21,15 +22,15 @@ def svm_clf (x_train, y_train):
 
 
 # This is for Logistic Regression 
-def logistic_clf (x_train, x_test):
-    print("Logistic  Classifier") 
+def Logistic_Regression (x_train, x_test):
+    print("Logistic Regression Classifier") 
     clf = LogisticRegression(C=1e5)
     clf.fit(x_train, y_train)
     return clf
 
 
 # This is for Naive Bayes 
-def naive_bayes (x_train, x_test):
+def Naive_Bayes (x_train, x_test):
    print("Naive Bayes  Classifier") 
    clf = GaussianNB()
    clf.fit(x_train, y_train)
@@ -37,7 +38,7 @@ def naive_bayes (x_train, x_test):
 
 
 # This is for Decision Tree  
-def tree_clf (x_train, y_train):
+def Decision_Tree (x_train, y_train):
     print("Decision Tree  Classifier") 
     clf = tree.DecisionTreeClassifier(criterion='entropy')
     clf.fit(x_train, y_train)
@@ -45,12 +46,19 @@ def tree_clf (x_train, y_train):
 
 # This is knn classifier 
 
-def knn_clf (x_train, y_train):
+def Nearest_Neighbours (x_train, y_train):
     print("KNN  Classifier") 
     n_neighbors = 15
     clf = neighbors.KNeighborsClassifier(n_neighbors, weights='uniform')
     clf.fit(x_train, y_train)
     return clf 
+
+
+def plot_cm(cm, model_name):
+    fig, ax = plot_confusion_matrix(conf_mat=cm, figsize=(4, 4))
+    ax.set_title(model_name.__name__)
+    fig.savefig(model_name.__name__+'.png')
+
 
 
 
@@ -74,7 +82,7 @@ if __name__ == "__main__":
    x_train, x_test, y_train, y_test \
       = train_test_split(X, Y, test_size=0.20, random_state=42)
 
-   models = [svm_clf, logistic_clf, naive_bayes, tree_clf, knn_clf]
+   models = [Support_Vector_Machine,Logistic_Regression,Naive_Bayes,Decision_Tree,Nearest_Neighbours]
 
    conf_mat = [] 
    for m in models:
@@ -82,4 +90,7 @@ if __name__ == "__main__":
       y_hat = clf.predict(x_test)
       cm = confusion_matrix(y_test, y_hat)
       print("Confusion matrix:\n", cm)
+      #fig, ax = plot_confusion_matrix(conf_mat=cm, figsize=(2, 2))
+      #plt.show()
+      plot_cm (cm, m)
       print("========")
